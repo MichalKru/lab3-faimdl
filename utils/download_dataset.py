@@ -14,7 +14,7 @@ def download_dataset():
 
     val_dir = 'dataset/tiny-imagenet-200/val'
     with open(os.path.join(val_dir, 'val_annotations.txt')) as f:
-        print('Reorganizing validation set...')
+        print('Reorganizing validation set')
         for line in f:
             fn, cls, *_ = line.split('\t')
             os.makedirs(os.path.join(val_dir, cls), exist_ok=True)
