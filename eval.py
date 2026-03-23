@@ -37,12 +37,3 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
 
     validate(model, val_loader, criterion)
-
-
-
-    num_epochs = 10
-
-    for epoch in range(num_epochs):
-        train(epoch, model, train_loader, criterion, optimizer)
-
-    torch.save(model.state_dict(), './checkpoint/model.pth')
