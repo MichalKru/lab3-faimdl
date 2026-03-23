@@ -33,7 +33,7 @@ def train(epoch, model, train_loader, criterion, optimizer):
 
     train_loss = running_loss / len(train_loader)
     train_accuracy = 100. * correct / total
-    print(f'\nTrain Epoch: {epoch} Loss: {train_loss:.6f} Acc: {train_accuracy:.2f}%')
+    print(f'\n\nTrain Epoch: {epoch+1} Loss: {train_loss:.6f} Acc: {train_accuracy:.2f}%')
 
 if __name__ == "__main__":
     train_loader, _ = get_dataloader()
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
-    num_epochs = 10
+    num_epochs = 2
 
     for epoch in range(num_epochs):
         train(epoch, model, train_loader, criterion, optimizer)
