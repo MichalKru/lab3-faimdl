@@ -1,4 +1,8 @@
+from models.CustomNet import CustomNet
 import torch
+from torch import nn
+from data.dataloader import get_dataloader
+
 
 def validate(model, val_loader, criterion):
     model.eval()
@@ -25,3 +29,20 @@ def validate(model, val_loader, criterion):
     print(f'Validation Loss: {val_loss:.6f} Acc: {val_accuracy:.2f}%')
     return val_accuracy
 
+
+if __name__ == "__main__":
+    _, val_loader = get_dataloader()
+    model = CustomNet().cuda()
+    model.load_state_dict(torch.load('checkpoints/model.pth'))
+    criterion = nn.CrossEntropyLoss()
+
+    validate(model, val_loader, criterion)
+
+
+
+    num_epochs = 10
+
+    for epoch in range(num_epochs):
+        train(epoch, model, train_loader, criterion, optimizer)
+
+    torch.save(model.state_dict(), './checkpoint/model.pth')
